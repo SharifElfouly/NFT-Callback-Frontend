@@ -21,14 +21,21 @@ export default function NFTs() {
       { start: 0, perPage: 10, direction: "increment" }
     ),
   });
+  console.log(data.pages[0]);
 
   return (
     <div className="flex flex-col gap-4 w-3/6">
-      {/* <Button disabled={!write} onClick={() => write?.()}> */}
-      {/*   Mint */}
-      {/* </Button> */}
-      {/* {isLoading && <div>Check Wallet</div>} */}
-      {/* {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>} */}
+      {data &&
+        data.pages[0].map((d) => {
+          if (d) {
+            return (
+              <div>
+                <div>{d.name}</div>
+                <div>{d.hash}</div>
+              </div>
+            );
+          }
+        })}
     </div>
   );
 }
