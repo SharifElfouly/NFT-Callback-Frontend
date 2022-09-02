@@ -16,10 +16,10 @@ export default function NFTs({ reload }) {
   const { address, isConnecting, isDisconnected } = useAccount();
 
   useEffect(() => {
-    console.log("useEffect");
+    refetch();
   }, [reload]);
 
-  const { data, fetchNextPage } = useContractInfiniteReads({
+  const { data, fetchNextPage, refetch } = useContractInfiniteReads({
     cacheKey: "mlootAttributes",
     ...paginatedIndexesConfig(
       (index) => ({
