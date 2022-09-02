@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import {
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from "wagmi";
 import abi from "../contracts/abi.json";
 import { Button, Input } from "@chakra-ui/react";
+import Loading from "./Loading";
 
-export default function Mint() {
+export default function Mint({ reload, setReload }) {
   const [name, setName] = useState("");
   const [hash, setHash] = useState("");
 
@@ -13,11 +18,23 @@ export default function Mint() {
     functionName: "safeMint",
     args: [name, hash],
   });
-  const { data, isLoading, isSuccess, write } = useContractWrite(config);
+
+  const { data, write } = useContractWrite(config);
+
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+    onSuccess: () => {
+      console.log("waitForTransaction");
+      setReload(!reload);
+    },
+  });
 
   return (
     <div className="flex flex-col gap-4 w-full">
-      <div className="mb-4 text-xl font-bold">Upload Model Hash</div>
+      <div className="mb-4 text-xl font-bold flex items-center justify-between">
+        <div>Upload Model Hash</div>
+        {isLoading && <Loading />}
+      </div>
       <Input
         placeholder="Model Name"
         value={name}
@@ -31,8 +48,6 @@ export default function Mint() {
       <Button disabled={!write} onClick={() => write?.()}>
         Mint
       </Button>
-      {isLoading && <div>Check Wallet</div>}
-      {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
     </div>
   );
 }

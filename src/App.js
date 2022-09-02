@@ -7,8 +7,11 @@ import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import Mint from "./components/Mint";
 import NFTs from "./components/NFTs";
+import { useState } from "react";
 
 function App() {
+  const [reload, setReload] = useState(false);
+
   return (
     <ChakraProvider>
       <WagmiConfig client={client}>
@@ -16,8 +19,8 @@ function App() {
           <NavBar />
           <div className="flex flex-col items-center p-10 gap-4 w-full">
             <div class="w-4/6">
-              <Mint />
-              <NFTs />
+              <Mint reload={reload} setReload={setReload} />
+              <NFTs reload={reload} />
             </div>
           </div>
         </RainbowKitProvider>
