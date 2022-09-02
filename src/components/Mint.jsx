@@ -16,7 +16,7 @@ export default function Mint() {
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
   return (
-    <div className="flex flex-col gap-4 w-3/6">
+    <div className="flex flex-col gap-4 w-full">
       <Input
         placeholder="Model Name"
         value={name}
