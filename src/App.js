@@ -6,7 +6,8 @@ import { client, chains } from "./utils/wagmi-config";
 import { ChakraProvider } from "@chakra-ui/react";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
-import Example from "./components/Example";
+import Mint from "./components/Mint";
+// import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <NavBar />
           <div className="flex flex-col justify-center items-center m-10">
             <Home />
-            <Example />
+            <Mint />
           </div>
         </RainbowKitProvider>
       </WagmiConfig>
