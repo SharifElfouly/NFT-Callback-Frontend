@@ -8,6 +8,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 import Mint from "./components/Mint";
 import NFTs from "./components/NFTs";
 import { useState } from "react";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [reload, setReload] = useState(false);
@@ -23,6 +24,7 @@ function App() {
               <NFTs reload={reload} />
             </div>
           </div>
+          <Footer />
         </RainbowKitProvider>
       </WagmiConfig>
     </ChakraProvider>
