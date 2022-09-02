@@ -14,14 +14,9 @@ export const NavBar = () => {
 
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-      {address && (
-        <div>
-          Balance: {data?.formatted} {data?.symbol}
-        </div>
-      )}
       <HStack h={20} alignItems={"center"} justifyContent={"space-between"}>
         <Box style={{ fontWeight: "800", cursor: "pointer" }}>
-          {/* <NavLink route={"/"}>CHC</NavLink> */}
+          <div>CNFT</div>
         </Box>
         <HStack>
           <Box mr={6} style={{ fontWeight: "800", cursor: "pointer" }}>
