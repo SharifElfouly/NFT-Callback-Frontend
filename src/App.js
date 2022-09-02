@@ -7,6 +7,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import Mint from "./components/Mint";
+import NFTs from "./components/NFTs";
 // import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 function App() {
@@ -15,9 +16,10 @@ function App() {
       <WagmiConfig client={client}>
         <RainbowKitProvider chains={chains}>
           <NavBar />
-          <div className="flex flex-col justify-center items-center m-10">
+          <div className="flex flex-col justify-center items-center m-10 gap-4">
             <Home />
             <Mint />
+            <NFTs />
           </div>
         </RainbowKitProvider>
       </WagmiConfig>
