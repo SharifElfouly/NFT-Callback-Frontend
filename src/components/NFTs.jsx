@@ -1,5 +1,6 @@
 import abi from "../contracts/abi.json";
 import { useContractInfiniteReads, paginatedIndexesConfig } from "wagmi";
+import NFT from "./NFT";
 
 const contractConfig = {
   addressOrName: "0x7e51Cb0880343732D0216527900C5C0184308642",
@@ -21,21 +22,18 @@ export default function NFTs() {
       { start: 0, perPage: 10, direction: "increment" }
     ),
   });
-  console.log(data.pages[0]);
 
   return (
-    <div className="flex flex-col gap-4 w-3/6">
-      {data &&
-        data.pages[0].map((d) => {
-          if (d) {
-            return (
-              <div>
-                <div>{d.name}</div>
-                <div>{d.hash}</div>
-              </div>
-            );
-          }
-        })}
+    <div>
+      <div className="mt-8 mb-8 text-xl font-bold">My Models</div>
+      <div className="grid gap-4 grid-cols-2 grid-rows-3">
+        {data &&
+          data.pages[0].map((d) => {
+            if (d) {
+              return <NFT name={d.name} hash={d.hash} />;
+            }
+          })}
+      </div>
     </div>
   );
 }
