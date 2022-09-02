@@ -17,6 +17,7 @@ export default function Mint() {
 
   return (
     <div className="flex flex-col gap-4 w-full">
+      <div className="mb-4 text-xl font-bold">Upload Model Hash</div>
       <Input
         placeholder="Model Name"
         value={name}
@@ -30,8 +31,8 @@ export default function Mint() {
       <Button disabled={!write} onClick={() => write?.()}>
         Mint
       </Button>
-      {/* {isLoading && <div>Check Wallet</div>} */}
-      {/* {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>} */}
+      {isLoading && <div>Check Wallet</div>}
+      {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
     </div>
   );
 }

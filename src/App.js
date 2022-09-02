@@ -14,8 +14,8 @@ function App() {
       <WagmiConfig client={client}>
         <RainbowKitProvider chains={chains}>
           <NavBar />
-          <div className="flex flex-col items-center m-10 gap-4 w-full">
-            <div class="w-3/6">
+          <div className="flex flex-col items-center p-10 gap-4 w-full">
+            <div class="w-4/6">
               <Mint />
               <NFTs />
             </div>

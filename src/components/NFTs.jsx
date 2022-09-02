@@ -27,12 +27,15 @@ export default function NFTs() {
     <div>
       <div className="mt-8 mb-8 text-xl font-bold">My Models</div>
       <div className="grid gap-4 grid-cols-2 grid-rows-3">
-        {data &&
+        {data ? (
           data.pages[0].map((d) => {
             if (d) {
               return <NFT name={d.name} hash={d.hash} />;
             }
-          })}
+          })
+        ) : (
+          <div>No models found!</div>
+        )}
       </div>
     </div>
   );
