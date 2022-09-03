@@ -40,7 +40,7 @@ export default function NFTs({ reload }) {
   return (
     <div>
       <div className="mt-8 mb-8 text-xl font-bold">My Models</div>
-      <div className="grid gap-4 grid-cols-2 grid-rows-1 ">
+      <div className="flex gap-4 flex-wrap justify-center">
         {data &&
           data.pages[0].map((d) => {
             if (d) {
