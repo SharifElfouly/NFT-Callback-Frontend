@@ -7,6 +7,7 @@ import {
 import NFT from "./NFT";
 import { useEffect } from "react";
 import { Button } from "antd";
+import { add0x } from "../utils/hash";
 
 const contractConfig = {
   addressOrName: "0x7e51Cb0880343732D0216527900C5C0184308642",
@@ -38,12 +39,12 @@ export default function NFTs({ reload }) {
 
   return (
     <div>
-      <div className="mt-8 mb-8  text-xl font-bold">My Models</div>
+      <div className="mt-8 mb-8 text-xl font-bold">My Models</div>
       <div className="grid gap-4 grid-cols-2 grid-rows-1 ">
         {data &&
           data.pages[0].map((d) => {
             if (d) {
-              return <NFT name={d[1]} hash={d[2]} />;
+              return <NFT name={d[1]} hash={add0x(d[2])} />;
             }
           })}
         {data && data.pages[0][0] == null && (
