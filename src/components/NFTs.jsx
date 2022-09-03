@@ -6,6 +6,7 @@ import {
 } from "wagmi";
 import NFT from "./NFT";
 import { useEffect } from "react";
+import { Button } from "antd";
 
 const contractConfig = {
   addressOrName: "0x7e51Cb0880343732D0216527900C5C0184308642",
@@ -19,28 +20,26 @@ export default function NFTs({ reload }) {
     refetch();
   }, [reload]);
 
-  const { data, fetchNextPage, refetch } = useContractInfiniteReads({
-    cacheKey: "mlootAttributes",
-    ...paginatedIndexesConfig(
-      (index) => ({
-        ...contractConfig,
-        functionName: "models",
-        args: [address, index],
-        onSuccess(data) {
-          console.log("Success", data);
-        },
-      }),
-      { start: 0, perPage: 10, direction: "increment" }
-    ),
-    onSuccess: () => {
-      console.log("Read!");
-    },
-  });
+  const { data, fetchNextPage, refetch, hasNextPage } =
+    useContractInfiniteReads({
+      cacheKey: "nfts",
+      ...paginatedIndexesConfig(
+        (index) => ({
+          ...contractConfig,
+          functionName: "models",
+          args: [address, index],
+          onSuccess(data) {
+            console.log("Success", data);
+          },
+        }),
+        { start: 0, perPage: 100, direction: "increment" }
+      ),
+    });
 
   return (
     <div>
       <div className="mt-8 mb-8  text-xl font-bold">My Models</div>
-      <div className="grid gap-4 grid-cols-2 grid-rows-3 ">
+      <div className="grid gap-4 grid-cols-2 grid-rows-1 ">
         {data &&
           data.pages[0].map((d) => {
             if (d) {
@@ -51,6 +50,7 @@ export default function NFTs({ reload }) {
           <div class="font-light text-sm">No models found!</div>
         )}
       </div>
+      {/* {hasNextPage && <Button onClick={fetchNextPage}>More</Button>} */}
     </div>
   );
 }
