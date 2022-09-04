@@ -5,6 +5,7 @@ import { Button } from "@chakra-ui/react";
 import { add0x } from "../utils/hash";
 import Loading from "./Loading";
 import Address from "./Address";
+import { useEffect } from "react";
 
 const contractConfig = {
   addressOrName: "0x7e51Cb0880343732D0216527900C5C0184308642",
@@ -13,7 +14,7 @@ const contractConfig = {
 
 const ITEMS_PER_PAGE = 100;
 
-export default function NFTs({ address, setAddress, isConnected }) {
+export default function NFTs({ address, setAddress, isConnected, reload }) {
   const { data, refetch, isFetching } = useContractInfiniteReads({
     cacheKey: "nfts",
     ...paginatedIndexesConfig(
@@ -28,6 +29,10 @@ export default function NFTs({ address, setAddress, isConnected }) {
       { start: 0, perPage: ITEMS_PER_PAGE, direction: "increment" }
     ),
   });
+
+  useEffect(() => {
+    refetch();
+  }, [reload]);
 
   return (
     <div>
