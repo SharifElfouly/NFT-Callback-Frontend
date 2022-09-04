@@ -15,9 +15,17 @@ export const NavBar = () => {
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
       <HStack h={20} alignItems={"center"} justifyContent={"space-between"}>
-        <Box style={{ fontWeight: "800", cursor: "pointer" }}>
-          <div>Model NFTs</div>
-        </Box>
+        <div class="flex gap-2 items-end">
+          <Box style={{ fontWeight: "800", cursor: "pointer" }}>
+            <div class="text-2xl">Model NFTs</div>
+          </Box>
+          <div class="flex gap-1 text-xs">
+            <div>by</div>
+            <a href="https://twitter.com/elfouly_sharif">
+              <div class="text-blue-400">@elfouly_sharif</div>
+            </a>
+          </div>
+        </div>
         <HStack>
           <Box mr={6} style={{ fontWeight: "800", cursor: "pointer" }}>
             {/* <NavLink route={"/bets"}>Bets</NavLink> */}
