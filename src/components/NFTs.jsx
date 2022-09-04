@@ -52,7 +52,7 @@ export default function NFTs({ reload }) {
           {data &&
             data.pages[0].map((d) => {
               if (d) {
-                return <NFT name={d[1]} hash={add0x(d[2])} />;
+                return <NFT id={d[0]._hex} name={d[1]} hash={add0x(d[2])} />;
               }
             })}
           {data && !isFetching && data.pages[0][0] == null && (
