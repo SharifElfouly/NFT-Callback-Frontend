@@ -6,10 +6,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import Mint from "./components/Mint";
-import NFTs from "./components/NFTs";
 import { useState } from "react";
 import { Footer } from "./components/Footer";
 import Verify from "./components/Verify";
+import NFTsWrapper from "./components/NFTsWrapper";
 // import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 function App() {
@@ -22,9 +22,9 @@ function App() {
           <NavBar />
           <div className="flex flex-col items-center p-10 w-full">
             <div class="w-4/6 flex flex-col gap-8">
-              <Verify />
+              {/* <Verify /> */}
               <Mint reload={reload} setReload={setReload} />
-              <NFTs reload={reload} />
+              <NFTsWrapper />
             </div>
           </div>
           <Footer />
