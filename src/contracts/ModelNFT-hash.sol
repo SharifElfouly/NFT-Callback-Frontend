@@ -12,6 +12,7 @@ contract ModelNFT is ERC721, Ownable {
         string loss;
         string epoch;
         bytes32 hash;
+        uint256 timestamp;
     }
 
     using Counters for Counters.Counter;
@@ -30,7 +31,7 @@ contract ModelNFT is ERC721, Ownable {
 
         // update models
         Model[] storage modelList = models[msg.sender];
-        modelList.push(Model(tokenId, name, loss, epoch, hash));
+        modelList.push(Model(tokenId, name, loss, epoch, hash, block.timestamp));
         models[msg.sender] = modelList;
 
         // mint
