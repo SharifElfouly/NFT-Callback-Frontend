@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Footer } from "./Footer";
 import { NavBar } from "./layout/Navbar";
 import Mint from "./Mint";
 import { useAccount } from "wagmi";
@@ -34,7 +33,7 @@ export default function Home() {
             )}
             {!isConnected && (
               <div class="mt-2">
-                Connect your wallet to see your or other Models!
+                Connect your wallet to see your or other people's models!
               </div>
             )}
           </div>
